@@ -14,15 +14,24 @@
             box-sizing: border-box;
         }
 
+        /* Smooth scroll y margen para header fijo */
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             background-color: #fefefe;
             color: #1A2C3E;
-            scroll-behavior: smooth;
             line-height: 1.4;
         }
 
-        /* HEADER FIJO */
+        /* Compensación para header fijo en todos los anclajes */
+        [id] {
+            scroll-margin-top: 85px;
+        }
+
+        /* HEADER FIJO CON TRANSICIÓN */
         .header {
             position: fixed;
             top: 0;
@@ -32,6 +41,12 @@
             z-index: 1000;
             padding: 0.9rem 2rem;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease-in-out;
+            transform: translateY(0);
+        }
+
+        .header-hidden {
+            transform: translateY(-100%);
         }
 
         .nav-container {
@@ -405,19 +420,15 @@
             font-size: 0.9rem;
         }
 
-        /* Sección "Así se vive Parke52": tarjetas con misma altura y separación texto-icono */
+        /* Sección "Así se vive Parke52" - usando GRID para igual altura automática */
         .steps {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
             gap: 1rem;
             margin: 2rem 0;
-            align-items: stretch;
         }
 
         .step {
-            flex: 1;
-            min-width: 150px;
             background: white;
             border-radius: 30px;
             padding: 1.5rem 1rem;
@@ -426,8 +437,7 @@
             box-shadow: 0 8px 18px rgba(0,0,0,0.03);
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
+            justify-content: space-between; /* distribuye espacio entre número, título, texto e icono */
             height: 100%;
         }
 
@@ -446,13 +456,31 @@
         .step p {
             font-size: 0.9rem;
             color: #4f5f6f;
-            margin-bottom: 1.5rem;   /* Espacio extra antes del icono */
+            margin-bottom: 0; /* sin margen inferior para que space-between funcione correctamente */
         }
 
         .step i {
             font-size: 1.8rem;
             color: #FF3B5C;
-            margin-top: 0.25rem;     /* Pequeño espacio adicional para separación */
+            margin-top: 1.8rem;   /* más separación entre texto e icono */
+            margin-bottom: 0;
+        }
+
+        /* Responsive para la cuadrícula de pasos */
+        @media (max-width: 900px) {
+            .steps {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        @media (max-width: 600px) {
+            .steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 400px) {
+            .steps {
+                grid-template-columns: 1fr;
+            }
         }
 
         /* Sección adaptable: dos columnas */
@@ -495,8 +523,7 @@
             gap: 0.5rem;
         }
         .badge-type i {
-            font-size: 1rem;
-            color: #FF3B5C;
+            display: none;
         }
 
         /* Footer en dos columnas para enlaces */
@@ -538,6 +565,7 @@
             width: 1.4rem;
         }
 
+        /* Ajustes para pantallas pequeñas */
         @media (max-width: 768px) {
             .nav-links {
                 gap: 1rem;
@@ -591,11 +619,19 @@
             .footer-links-columns {
                 justify-content: center;
             }
+            /* Aumentar el padding superior para que el header no tape el contenido cuando tiene dos líneas */
+            .main-content {
+                padding-top: 130px;
+            }
+            /* Ajustar el margen de scroll para anclajes */
+            [id] {
+                scroll-margin-top: 130px;
+            }
         }
     </style>
 </head>
 <body>
-    <header class="header">
+    <header class="header" id="main-header">
         <div class="nav-container">
             <a href="#hero-top" class="logo-link">
                 <span class="parke">Parke</span><span class="logo-number">52</span>
@@ -622,7 +658,7 @@
                         La plataforma que moderniza la experiencia completa de tu parque de diversiones
                     </h1>
                     <div class="hero-sub">
-                        ✨ Todo lo que necesitas para una visita inolvidable: Pagos sencillos, acceso sin filas y recargas rápidas que te harán volver. ✨
+                        Todo lo que necesitas para una visita inolvidable: Pagos sencillos, acceso sin filas y recargas rápidas que te harán volver.
                     </div>
                     <div class="btn-group">
                         <a href="#contacto-footer" class="btn-primary"><i class="fas fa-calendar-check"></i> Solicitar demo</a>
@@ -639,7 +675,7 @@
             </div>
         </section>
 
-        <!-- Experiencia conectada (texto corto y preciso) -->
+        <!-- Experiencia conectada -->
         <section id="experiencia-conectada" style="background-color: #FCFAFE;">
             <div class="container">
                 <h2 class="section-title">Una experiencia conectada de principio a fin</h2>
@@ -655,7 +691,7 @@
             </div>
         </section>
 
-        <!-- Una sola plataforma (carrusel con título corregido) -->
+        <!-- Una sola plataforma (carrusel con auto-slide) -->
         <section id="plataforma" style="background-color: #FFFFFF;">
             <div class="container">
                 <h2 class="section-title">Una sola plataforma, múltiples experiencias</h2>
@@ -722,7 +758,7 @@
             </div>
         </section>
 
-        <!-- Así se vive Parke52 (tarjetas igual tamaño y separación) -->
+        <!-- Así se vive Parke52 -->
         <section id="recorrido" style="background-color: #F8F9FE;">
             <div class="container">
                 <h2 class="section-title">Así se vive Parke52</h2>
@@ -762,7 +798,7 @@
             </div>
         </section>
 
-        <!-- Sección adaptable -->
+        <!-- Sección adaptable (con check verde en lugar de iconos) -->
         <section style="background-color: #FFFFFF;">
             <div class="container adaptable-wrapper">
                 <div class="adaptable-title">
@@ -770,12 +806,12 @@
                 </div>
                 <div class="adaptable-badges">
                     <div class="badge-list">
-                        <span class="badge-type"><i class="fas fa-star-of-life"></i> Parques de diversiones</span>
-                        <span class="badge-type"><i class="fas fa-water"></i> Parques acuáticos</span>
-                        <span class="badge-type"><i class="fas fa-car"></i> Karting</span>
-                        <span class="badge-type"><i class="fas fa-birthday-cake"></i> Centros recreativos</span>
-                        <span class="badge-type"><i class="fas fa-users"></i> Experiencias familiares</span>
-                        <span class="badge-type"><i class="fas fa-ticket-alt"></i> Atracciones por consumo</span>
+                        <span class="badge-type">✅ Parques de diversiones</span>
+                        <span class="badge-type">✅ Parques acuáticos</span>
+                        <span class="badge-type">✅ Karting</span>
+                        <span class="badge-type">✅ Centros recreativos</span>
+                        <span class="badge-type">✅ Experiencias familiares</span>
+                        <span class="badge-type">✅ Atracciones por consumo</span>
                     </div>
                 </div>
             </div>
@@ -792,7 +828,7 @@
                     <div class="card-value"><i class="fas fa-exchange-alt"></i><h3>Flexibilidad operativa</h3><p>Diferentes canales de atención y acceso en un mismo ecosistema.</p></div>
                     <div class="card-value"><i class="fas fa-chart-line"></i><h3>Orientado al crecimiento</h3><p>Más control, más eficiencia y más oportunidades para el negocio.</p></div>
                 </div>
-                <div style="text-align: center; margin-top: 2rem; font-style: italic; font-weight: 500;">✨ Parke52: Donde la diversión se encuentra con una nueva forma de operar ✨</div>
+                <div style="text-align: center; margin-top: 2rem; font-style: italic; font-weight: 500;">Parke52: Donde la diversión se encuentra con una nueva forma de operar</div>
             </div>
         </section>
 
@@ -836,13 +872,29 @@
                     </div>
                 </div>
                 <hr style="margin: 2rem 0 1rem; border-color:#22262e;">
-                <p style="text-align: center; font-size: 0.85rem;">© 2025 Parke52 – Experiencia inteligente para parques. Menos fricción, más emoción.</p>
+                <p style="text-align: center; font-size: 0.85rem;">© 2026 Parke52 – Experiencia inteligente para parques. Menos fricción, más emoción.</p>
             </div>
         </footer>
     </main>
 
     <script>
-        // Datos de los módulos para el carrusel con título corregido
+        // Header auto-hide on scroll
+        let lastScrollTop = 0;
+        const header = document.getElementById('main-header');
+        const scrollThreshold = 50;
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (currentScroll > lastScrollTop && currentScroll > scrollThreshold) {
+                header.classList.add('header-hidden');
+            } else if (currentScroll < lastScrollTop || currentScroll <= 10) {
+                header.classList.remove('header-hidden');
+            }
+            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+        });
+
+        // Datos de los módulos para el carrusel
         const modules = [
             { icon: "fas fa-tablet-alt", title: "Kioskos de autopago", text: "Consulta de cuenta, recarga de créditos y pago rápido de forma autónoma." },
             { icon: "fas fa-store", title: "Venta asistida en taquilla", text: "Herramienta ágil para vender, recargar y asociar tarjetas con soporte en sitio." },
@@ -853,6 +905,9 @@
         ];
 
         let currentIndex = 0;
+        let autoSlideInterval = null;
+        const AUTO_SLIDE_DELAY = 6000;
+
         const carouselCard = document.getElementById('carousel-card');
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
@@ -881,6 +936,7 @@
                 dot.addEventListener('click', () => {
                     currentIndex = idx;
                     renderCard();
+                    resetAutoSlide();
                 });
                 dotsContainer.appendChild(dot);
             });
@@ -889,17 +945,34 @@
         function nextModule() {
             currentIndex = (currentIndex + 1) % modules.length;
             renderCard();
+            resetAutoSlide();
         }
 
         function prevModule() {
             currentIndex = (currentIndex - 1 + modules.length) % modules.length;
             renderCard();
+            resetAutoSlide();
+        }
+
+        function startAutoSlide() {
+            if (autoSlideInterval) clearInterval(autoSlideInterval);
+            autoSlideInterval = setInterval(() => {
+                nextModule();
+            }, AUTO_SLIDE_DELAY);
+        }
+
+        function resetAutoSlide() {
+            if (autoSlideInterval) {
+                clearInterval(autoSlideInterval);
+                startAutoSlide();
+            }
         }
 
         prevBtn.addEventListener('click', prevModule);
         nextBtn.addEventListener('click', nextModule);
         createDots();
         renderCard();
+        startAutoSlide();
     </script>
 </body>
 </html>
