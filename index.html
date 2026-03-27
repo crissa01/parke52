@@ -99,56 +99,101 @@
 
         section {
             padding: 5rem 2rem;
+            position: relative;
+            overflow: hidden;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
+            position: relative;
+            z-index: 2;
         }
 
-        /* Hero centrado */
+        /* Decoración SVG posicionada */
+        .section-svg-deco {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.3;
+        }
+
+        /* Hero con gradiente y dos columnas */
         .hero {
-            background: linear-gradient(145deg, #FFFFFF 0%, #F8F9FF 100%);
-            text-align: center;
+            background: linear-gradient(145deg, #FFE5E8 0%, #C0D0E0 100%);
+            text-align: left;
+            margin-top: -85px;
+            padding-top: calc(5rem + 85px);
+            position: relative;
         }
 
         .hero-grid {
             display: flex;
-            flex-direction: column;
+            flex-wrap: wrap;
             align-items: center;
-            gap: 2.5rem;
+            gap: 3rem;
+        }
+
+        .hero-left {
+            flex: 1.2;
+        }
+
+        .hero-right {
+            flex: 0.9;
+        }
+
+        .hero-right img {
+            width: 100%;
+            height: auto;
+            border-radius: 32px;
+            box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .hero-right img:hover {
+            transform: scale(1.02);
         }
 
         .hero-text {
-            max-width: 800px;
-            margin: 0 auto;
+            max-width: 100%;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 1.5rem;
         }
 
         .hero-visual {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 1.5rem;
+            gap: 1.2rem;
+            margin-top: 2rem;
         }
 
         .badge-icon {
             background: white;
             border-radius: 32px;
             box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.1);
-            padding: 1rem 1.2rem;
+            padding: 0.8rem 1rem;
             text-align: center;
-            width: 120px;
+            width: 110px;
             transition: transform 0.2s ease;
         }
 
         .badge-icon i {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             color: #FF3B5C;
             margin-bottom: 0.5rem;
         }
 
         .badge-icon p {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 600;
             margin-top: 0.3rem;
             color: #1F2A3E;
@@ -176,16 +221,6 @@
             margin-bottom: 1rem;
             line-height: 1.4;
             max-width: 750px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .btn-group {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-top: 1.5rem;
         }
 
         .btn-primary {
@@ -211,7 +246,7 @@
         }
 
         .btn-secondary {
-            background: transparent;
+            background: #ffffff;
             border: 2px solid #FF3B5C;
             padding: 0.9rem 1.8rem;
             border-radius: 50px;
@@ -245,12 +280,11 @@
             font-size: 1.15rem;
         }
 
-        /* textos más oscuros */
         .dark-text {
             color: #1E2F3F;
         }
 
-        /* ESTILO DE TARJETAS CON HOVER: movimiento leve y sombra */
+        /* Estilo de tarjetas con hover */
         .card-value, .module-card, .carousel-card, .tech-card, .step, .highlight-item {
             transition: transform 0.25s ease, box-shadow 0.25s ease;
         }
@@ -259,7 +293,6 @@
             box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.15);
         }
 
-        /* cuadrículas con centrado de contenido */
         .grid-4, .grid-6, .grid-benefits {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -290,7 +323,6 @@
             color: #4f5f6f;
         }
 
-        /* Estilo para el módulo carrusel (más ancho) */
         .carousel-card {
             background: white;
             border-radius: 32px;
@@ -383,7 +415,6 @@
             border-radius: 12px;
         }
 
-        /* Tarjetas para la sección de tecnología en dos columnas */
         .tech-grid {
             display: flex;
             flex-wrap: wrap;
@@ -420,14 +451,12 @@
             font-size: 0.9rem;
         }
 
-        /* Sección "Así se vive Parke52" - usando GRID para igual altura automática */
         .steps {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
             gap: 1rem;
             margin: 2rem 0;
         }
-
         .step {
             background: white;
             border-radius: 30px;
@@ -437,36 +466,31 @@
             box-shadow: 0 8px 18px rgba(0,0,0,0.03);
             display: flex;
             flex-direction: column;
-            justify-content: space-between; /* distribuye espacio entre número, título, texto e icono */
+            justify-content: space-between;
             height: 100%;
         }
-
         .step-num {
             font-size: 2rem;
             font-weight: 800;
             color: #FF3B5C;
             margin-bottom: 0.5rem;
         }
-
         .step h3 {
             font-size: 1.2rem;
             margin: 0.5rem 0 0.25rem;
         }
-
         .step p {
             font-size: 0.9rem;
             color: #4f5f6f;
-            margin-bottom: 0; /* sin margen inferior para que space-between funcione correctamente */
+            margin-bottom: 0;
         }
-
         .step i {
             font-size: 1.8rem;
             color: #FF3B5C;
-            margin-top: 1.8rem;   /* más separación entre texto e icono */
+            margin-top: 1.8rem;
             margin-bottom: 0;
         }
 
-        /* Responsive para la cuadrícula de pasos */
         @media (max-width: 900px) {
             .steps {
                 grid-template-columns: repeat(3, 1fr);
@@ -483,7 +507,6 @@
             }
         }
 
-        /* Sección adaptable: dos columnas */
         .adaptable-wrapper {
             display: flex;
             flex-wrap: wrap;
@@ -526,13 +549,11 @@
             display: none;
         }
 
-        /* Footer en dos columnas para enlaces */
         .footer {
             background: #0B0F17;
             color: #C7D0D9;
             padding: 3rem 2rem 1.5rem;
         }
-
         .footer-grid {
             display: flex;
             flex-wrap: wrap;
@@ -565,7 +586,6 @@
             width: 1.4rem;
         }
 
-        /* Ajustes para pantallas pequeñas */
         @media (max-width: 768px) {
             .nav-links {
                 gap: 1rem;
@@ -619,13 +639,26 @@
             .footer-links-columns {
                 justify-content: center;
             }
-            /* Aumentar el padding superior para que el header no tape el contenido cuando tiene dos líneas */
             .main-content {
                 padding-top: 130px;
             }
-            /* Ajustar el margen de scroll para anclajes */
             [id] {
                 scroll-margin-top: 130px;
+            }
+            .hero {
+                margin-top: -130px;
+                padding-top: calc(5rem + 130px);
+            }
+            .hero-grid {
+                flex-direction: column;
+            }
+            .hero-right {
+                margin-top: 1.5rem;
+            }
+            .section-svg-deco {
+                width: 140px;
+                height: 140px;
+                opacity: 0.25;
             }
         }
     </style>
@@ -652,31 +685,36 @@
         <!-- Hero -->
         <section id="hero-top" class="hero">
             <div class="container hero-grid">
-                <div class="hero-text">
-                    <h1>
-                        <span class="gradient-parke">Parke52</span><br>
-                        La plataforma que moderniza la experiencia completa de tu parque de diversiones
-                    </h1>
-                    <div class="hero-sub">
-                        Todo lo que necesitas para una visita inolvidable: Pagos sencillos, acceso sin filas y recargas rápidas que te harán volver.
+                <div class="hero-left">
+                    <div class="hero-text">
+                        <h1>
+                            <span class="gradient-parke">Parke52</span><br>
+                            La plataforma que moderniza la experiencia completa de tu parque de diversiones
+                        </h1>
+                        <div class="hero-sub">
+                            Todo lo que necesitas para una visita inolvidable: Pagos sencillos, acceso sin filas y recargas rápidas que te harán volver.
+                        </div>
+                        <div class="btn-group">
+                            <a href="#contacto-footer" class="btn-primary"><i class="fas fa-calendar-check"></i> Solicitar demo</a>
+                            <a href="#plataforma" class="btn-secondary"><i class="fas fa-rocket"></i> Conocer la plataforma</a>
+                        </div>
                     </div>
-                    <div class="btn-group">
-                        <a href="#contacto-footer" class="btn-primary"><i class="fas fa-calendar-check"></i> Solicitar demo</a>
-                        <a href="#plataforma" class="btn-secondary"><i class="fas fa-rocket"></i> Conocer la plataforma</a>
+                    <div class="hero-visual">
+                        <div class="badge-icon"><i class="fas fa-tablet-alt"></i><p>Kiosko</p></div>
+                        <div class="badge-icon"><i class="fas fa-mobile-alt"></i><p>App móvil</p></div>
+                        <div class="badge-icon"><i class="fas fa-id-card"></i><p>Tarjeta sin contacto</p></div>
+                        <div class="badge-icon"><i class="fas fa-qrcode"></i><p>QR dinámico</p></div>
+                        <div class="badge-icon"><i class="fas fa-sign-in-alt"></i><p>Validador de entrada</p></div>
                     </div>
                 </div>
-                <div class="hero-visual">
-                    <div class="badge-icon"><i class="fas fa-tablet-alt"></i><p>Kiosko</p></div>
-                    <div class="badge-icon"><i class="fas fa-mobile-alt"></i><p>App móvil</p></div>
-                    <div class="badge-icon"><i class="fas fa-id-card"></i><p>Tarjeta sin contacto</p></div>
-                    <div class="badge-icon"><i class="fas fa-qrcode"></i><p>QR dinámico</p></div>
-                    <div class="badge-icon"><i class="fas fa-sign-in-alt"></i><p>Validador de entrada</p></div>
+                <div class="hero-right">
+                    <img src="https://images.pexels.com/photos/163439/pexels-photo-163439.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Familia feliz en un parque de diversiones" loading="lazy">
                 </div>
             </div>
         </section>
 
-        <!-- Experiencia conectada -->
-        <section id="experiencia-conectada" style="background-color: #FCFAFE;">
+        <!-- Sección 1: Experiencia conectada -->
+        <section id="experiencia-conectada" style="background-color: #FEF0F2;">
             <div class="container">
                 <h2 class="section-title">Una experiencia conectada de principio a fin</h2>
                 <p class="section-sub dark-text" style="max-width: 750px;">
@@ -691,8 +729,8 @@
             </div>
         </section>
 
-        <!-- Una sola plataforma (carrusel con auto-slide) -->
-        <section id="plataforma" style="background-color: #FFFFFF;">
+        <!-- Sección 2: Una sola plataforma -->
+        <section id="plataforma" style="background-color: #FFFBFD;">
             <div class="container">
                 <h2 class="section-title">Una sola plataforma, múltiples experiencias</h2>
                 <p class="section-sub dark-text">Tecnología integrada para que cada punto de contacto sea ágil y memorable.</p>
@@ -707,8 +745,8 @@
             </div>
         </section>
 
-        <!-- La tecnología también puede sentirse divertida -->
-        <section style="background: linear-gradient(120deg, #FFF6F9, #ffffff);">
+        <!-- Sección 3: La tecnología también puede sentirse divertida -->
+        <section style="background: linear-gradient(120deg, #FFEFF3, #FFF9FB);">
             <div class="container">
                 <h2 class="section-title">La tecnología también puede sentirse divertida</h2>
                 <p class="section-sub" style="max-width: 700px; margin-bottom: 2rem;">
@@ -743,8 +781,8 @@
             </div>
         </section>
 
-        <!-- Beneficios reales para la gestión del parque -->
-        <section id="beneficios-gestion" style="background-color: #FFFFFF;">
+        <!-- Sección 4: Beneficios reales para la gestión del parque -->
+        <section id="beneficios-gestion" style="background-color: #FFFBFD;">
             <div class="container">
                 <h2 class="section-title">Beneficios reales para la gestión del parque</h2>
                 <p class="section-sub" style="max-width: 700px;">Parke52 es una solución que potencia cada área del negocio.</p>
@@ -758,8 +796,8 @@
             </div>
         </section>
 
-        <!-- Así se vive Parke52 -->
-        <section id="recorrido" style="background-color: #F8F9FE;">
+        <!-- Sección 5: Así se vive Parke52 -->
+        <section id="recorrido" style="background-color: #EFF0F8;">
             <div class="container">
                 <h2 class="section-title">Así se vive Parke52</h2>
                 <p class="section-sub">Una historia sencilla que transforma la visita en un viaje lleno de emociones.</p>
@@ -798,8 +836,8 @@
             </div>
         </section>
 
-        <!-- Sección adaptable (con check verde en lugar de iconos) -->
-        <section style="background-color: #FFFFFF;">
+        <!-- Sección 6: Adaptable -->
+        <section style="background-color: #FFFBFD;">
             <div class="container adaptable-wrapper">
                 <div class="adaptable-title">
                     <h2>Una solución adaptable a distintos conceptos de entretenimiento</h2>
@@ -817,8 +855,8 @@
             </div>
         </section>
 
-        <!-- Diferenciadores -->
-        <section id="diferenciadores" style="background-color: #F2F5FA;">
+        <!-- Sección 7: Diferenciadores -->
+        <section id="diferenciadores" style="background-color: #EAEDF5;">
             <div class="container">
                 <h2 class="section-title">¿Por qué Parke52?</h2>
                 <p style="text-align: center; max-width: 780px; margin: 0 auto 2rem auto; font-size: 1.2rem;">Porque no es solo un sistema de cobro o de acceso. Es una plataforma que conecta la experiencia del visitante con la operación del parque en una sola propuesta moderna, flexible y lista para crecer.</p>
@@ -832,8 +870,8 @@
             </div>
         </section>
 
-        <!-- CTA final -->
-        <section id="demo" style="background: linear-gradient(115deg, #FF3B5C10, #FFF0F4);">
+        <!-- Sección 8: CTA final -->
+        <section id="demo" style="background: linear-gradient(115deg, #FF3B5C20, #FFE8EF);">
             <div class="container" style="text-align: center;">
                 <h2 class="section-title">Lleva la experiencia de tu parque a otro nivel</h2>
                 <p style="max-width: 650px; margin: 0 auto 2rem auto; font-size: 1.2rem;">Descubre cómo Parke52 puede ayudarte a modernizar la atención, agilizar accesos y ofrecer una experiencia más atractiva para tus visitantes.</p>
@@ -885,7 +923,6 @@
 
         window.addEventListener('scroll', () => {
             const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-            
             if (currentScroll > lastScrollTop && currentScroll > scrollThreshold) {
                 header.classList.add('header-hidden');
             } else if (currentScroll < lastScrollTop || currentScroll <= 10) {
@@ -894,7 +931,7 @@
             lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
         });
 
-        // Datos de los módulos para el carrusel
+        // Carrusel
         const modules = [
             { icon: "fas fa-tablet-alt", title: "Kioskos de autopago", text: "Consulta de cuenta, recarga de créditos y pago rápido de forma autónoma." },
             { icon: "fas fa-store", title: "Venta asistida en taquilla", text: "Herramienta ágil para vender, recargar y asociar tarjetas con soporte en sitio." },
@@ -973,6 +1010,171 @@
         createDots();
         renderCard();
         startAutoSlide();
+
+        // ---- Decoraciones en todas las secciones (excepto hero y footer) ----
+        // Definimos 6 patrones SVG distintos (formas libres, densas)
+        const patterns = [
+            // Patrón 1: puntos densos
+            `<svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="25" cy="30" r="4" fill="#FF3B5C"/>
+                <circle cx="55" cy="20" r="3" fill="#FF3B5C"/>
+                <circle cx="85" cy="35" r="4.5" fill="#FF3B5C"/>
+                <circle cx="115" cy="18" r="3" fill="#FF3B5C"/>
+                <circle cx="145" cy="28" r="4" fill="#FF3B5C"/>
+                <circle cx="175" cy="42" r="3.5" fill="#FF3B5C"/>
+                <circle cx="35" cy="70" r="4" fill="#FF3B5C"/>
+                <circle cx="65" cy="85" r="3" fill="#FF3B5C"/>
+                <circle cx="95" cy="65" r="4" fill="#FF3B5C"/>
+                <circle cx="125" cy="80" r="3.5" fill="#FF3B5C"/>
+                <circle cx="155" cy="72" r="4" fill="#FF3B5C"/>
+                <circle cx="45" cy="110" r="3" fill="#FF3B5C"/>
+                <circle cx="75" cy="125" r="4" fill="#FF3B5C"/>
+                <circle cx="105" cy="115" r="3.5" fill="#FF3B5C"/>
+                <circle cx="135" cy="130" r="4" fill="#FF3B5C"/>
+                <circle cx="165" cy="122" r="3" fill="#FF3B5C"/>
+                <circle cx="20" cy="160" r="4" fill="#FF3B5C"/>
+                <circle cx="50" cy="175" r="3.5" fill="#FF3B5C"/>
+                <circle cx="80" cy="168" r="4" fill="#FF3B5C"/>
+                <circle cx="110" cy="185" r="3" fill="#FF3B5C"/>
+                <circle cx="140" cy="172" r="4" fill="#FF3B5C"/>
+                <circle cx="170" cy="190" r="3.5" fill="#FF3B5C"/>
+            </svg>`,
+            // Patrón 2: rayas diagonales densas
+            `<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <line x1="15" y1="20" x2="50" y2="55" stroke="#FF3B5C" stroke-width="2" stroke-linecap="round"/>
+                <line x1="45" y1="10" x2="80" y2="45" stroke="#FF3B5C" stroke-width="2" stroke-linecap="round"/>
+                <line x1="75" y1="30" x2="110" y2="65" stroke="#FF3B5C" stroke-width="1.8" stroke-linecap="round"/>
+                <line x1="105" y1="15" x2="140" y2="50" stroke="#FF3B5C" stroke-width="2" stroke-linecap="round"/>
+                <line x1="135" y1="35" x2="170" y2="70" stroke="#FF3B5C" stroke-width="1.8" stroke-linecap="round"/>
+                <line x1="165" y1="20" x2="195" y2="55" stroke="#FF3B5C" stroke-width="2" stroke-linecap="round"/>
+                <line x1="25" y1="85" x2="60" y2="120" stroke="#FF3B5C" stroke-width="2" stroke-linecap="round"/>
+                <line x1="55" y1="75" x2="90" y2="110" stroke="#FF3B5C" stroke-width="1.8" stroke-linecap="round"/>
+                <line x1="85" y1="95" x2="120" y2="130" stroke="#FF3B5C" stroke-width="2" stroke-linecap="round"/>
+                <line x1="115" y1="80" x2="150" y2="115" stroke="#FF3B5C" stroke-width="2" stroke-linecap="round"/>
+                <line x1="145" y1="100" x2="180" y2="135" stroke="#FF3B5C" stroke-width="1.8" stroke-linecap="round"/>
+                <line x1="175" y1="85" x2="195" y2="120" stroke="#FF3B5C" stroke-width="2" stroke-linecap="round"/>
+                <line x1="35" y1="150" x2="70" y2="185" stroke="#FF3B5C" stroke-width="2" stroke-linecap="round"/>
+                <line x1="65" y1="140" x2="100" y2="175" stroke="#FF3B5C" stroke-width="1.8" stroke-linecap="round"/>
+                <line x1="95" y1="160" x2="130" y2="195" stroke="#FF3B5C" stroke-width="2" stroke-linecap="round"/>
+                <line x1="125" y1="145" x2="160" y2="180" stroke="#FF3B5C" stroke-width="2" stroke-linecap="round"/>
+                <line x1="155" y1="165" x2="190" y2="195" stroke="#FF3B5C" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>`,
+            // Patrón 3: triángulos densos
+            `<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <polygon points="20,25 40,5 60,25" fill="#FF3B5C" opacity="0.6"/>
+                <polygon points="70,15 90,-5 110,15" fill="#FF3B5C" opacity="0.6"/>
+                <polygon points="120,30 140,10 160,30" fill="#FF3B5C" opacity="0.6"/>
+                <polygon points="170,20 190,0 200,20" fill="#FF3B5C" opacity="0.6"/>
+                <polygon points="35,75 55,55 75,75" fill="#FF3B5C" opacity="0.6"/>
+                <polygon points="85,65 105,45 125,65" fill="#FF3B5C" opacity="0.6"/>
+                <polygon points="135,80 155,60 175,80" fill="#FF3B5C" opacity="0.6"/>
+                <polygon points="25,135 45,115 65,135" fill="#FF3B5C" opacity="0.6"/>
+                <polygon points="75,125 95,105 115,125" fill="#FF3B5C" opacity="0.6"/>
+                <polygon points="125,140 145,120 165,140" fill="#FF3B5C" opacity="0.6"/>
+                <polygon points="175,130 195,110 200,130" fill="#FF3B5C" opacity="0.6"/>
+                <polygon points="40,185 60,165 80,185" fill="#FF3B5C" opacity="0.6"/>
+                <polygon points="90,175 110,155 130,175" fill="#FF3B5C" opacity="0.6"/>
+                <polygon points="140,190 160,170 180,190" fill="#FF3B5C" opacity="0.6"/>
+            </svg>`,
+            // Patrón 4: ondas + puntos densos
+            `<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15,25 Q35,10 55,25 Q75,40 95,25 Q115,10 135,25 Q155,40 175,25" stroke="#FF3B5C" fill="none" stroke-width="1.8" stroke-linecap="round"/>
+                <path d="M20,70 Q40,55 60,70 Q80,85 100,70 Q120,55 140,70 Q160,85 180,70" stroke="#FF3B5C" fill="none" stroke-width="1.8" stroke-linecap="round"/>
+                <path d="M25,115 Q45,100 65,115 Q85,130 105,115 Q125,100 145,115 Q165,130 185,115" stroke="#FF3B5C" fill="none" stroke-width="1.8" stroke-linecap="round"/>
+                <path d="M30,160 Q50,145 70,160 Q90,175 110,160 Q130,145 150,160 Q170,175 190,160" stroke="#FF3B5C" fill="none" stroke-width="1.8" stroke-linecap="round"/>
+                <circle cx="25" cy="20" r="3" fill="#FF3B5C"/>
+                <circle cx="85" cy="30" r="3" fill="#FF3B5C"/>
+                <circle cx="145" cy="22" r="3" fill="#FF3B5C"/>
+                <circle cx="55" cy="65" r="3" fill="#FF3B5C"/>
+                <circle cx="115" cy="78" r="3" fill="#FF3B5C"/>
+                <circle cx="175" cy="70" r="3" fill="#FF3B5C"/>
+                <circle cx="35" cy="110" r="3" fill="#FF3B5C"/>
+                <circle cx="95" cy="122" r="3" fill="#FF3B5C"/>
+                <circle cx="155" cy="115" r="3" fill="#FF3B5C"/>
+                <circle cx="45" cy="155" r="3" fill="#FF3B5C"/>
+                <circle cx="105" cy="168" r="3" fill="#FF3B5C"/>
+                <circle cx="165" cy="160" r="3" fill="#FF3B5C"/>
+            </svg>`,
+            // Patrón 5: círculos concéntricos densos
+            `<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="35" cy="40" r="12" stroke="#FF3B5C" stroke-width="1.5" fill="none"/>
+                <circle cx="35" cy="40" r="6" stroke="#FF3B5C" stroke-width="1.2" fill="none"/>
+                <circle cx="95" cy="30" r="15" stroke="#FF3B5C" stroke-width="1.5" fill="none"/>
+                <circle cx="95" cy="30" r="7" stroke="#FF3B5C" stroke-width="1.2" fill="none"/>
+                <circle cx="125" cy="90" r="18" stroke="#FF3B5C" stroke-width="1.5" fill="none"/>
+                <circle cx="125" cy="90" r="9" stroke="#FF3B5C" stroke-width="1.2" fill="none"/>
+                <circle cx="55" cy="110" r="12" stroke="#FF3B5C" stroke-width="1.5" fill="none"/>
+                <circle cx="55" cy="110" r="6" stroke="#FF3B5C" stroke-width="1.2" fill="none"/>
+                <circle cx="145" cy="150" r="14" stroke="#FF3B5C" stroke-width="1.5" fill="none"/>
+                <circle cx="145" cy="150" r="7" stroke="#FF3B5C" stroke-width="1.2" fill="none"/>
+                <circle cx="175" cy="170" r="10" stroke="#FF3B5C" stroke-width="1.5" fill="none"/>
+                <circle cx="175" cy="170" r="5" stroke="#FF3B5C" stroke-width="1.2" fill="none"/>
+            </svg>`,
+            // Patrón 6: líneas onduladas + puntos
+            `<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15,25 C30,15 45,35 60,25 C75,15 90,35 105,25" stroke="#FF3B5C" fill="none" stroke-width="1.8"/>
+                <path d="M20,60 C35,50 50,70 65,60 C80,50 95,70 110,60" stroke="#FF3B5C" fill="none" stroke-width="1.8"/>
+                <path d="M25,95 C40,85 55,105 70,95 C85,85 100,105 115,95" stroke="#FF3B5C" fill="none" stroke-width="1.8"/>
+                <path d="M30,130 C45,120 60,140 75,130 C90,120 105,140 120,130" stroke="#FF3B5C" fill="none" stroke-width="1.8"/>
+                <path d="M35,165 C50,155 65,175 80,165 C95,155 110,175 125,165" stroke="#FF3B5C" fill="none" stroke-width="1.8"/>
+                <circle cx="35" cy="20" r="3" fill="#FF3B5C"/>
+                <circle cx="85" cy="30" r="3" fill="#FF3B5C"/>
+                <circle cx="125" cy="50" r="3" fill="#FF3B5C"/>
+                <circle cx="45" cy="75" r="3" fill="#FF3B5C"/>
+                <circle cx="95" cy="85" r="3" fill="#FF3B5C"/>
+                <circle cx="145" cy="95" r="3" fill="#FF3B5C"/>
+                <circle cx="55" cy="110" r="3" fill="#FF3B5C"/>
+                <circle cx="105" cy="120" r="3" fill="#FF3B5C"/>
+                <circle cx="155" cy="130" r="3" fill="#FF3B5C"/>
+                <circle cx="65" cy="145" r="3" fill="#FF3B5C"/>
+                <circle cx="115" cy="155" r="3" fill="#FF3B5C"/>
+                <circle cx="165" cy="165" r="3" fill="#FF3B5C"/>
+            </svg>`
+        ];
+
+        // Seleccionar todas las secciones dentro de main que no sean .hero ni footer
+        const allSections = Array.from(document.querySelectorAll('main > section:not(.hero)'));
+        allSections.forEach((section, idx) => {
+            // Evitar añadir duplicados (algunas ya tienen decoraciones manuales)
+            if (section.querySelector('.section-svg-deco')) return;
+
+            // Elegir patrón cíclicamente
+            const patternIdx = idx % patterns.length;
+            const svgContent = patterns[patternIdx];
+
+            // Determinar posición según índice: pares -> top-left & bottom-right; impares -> top-right & bottom-left
+            const isEven = idx % 2 === 0;
+
+            const deco1 = document.createElement('div');
+            deco1.className = 'section-svg-deco';
+            const deco2 = document.createElement('div');
+            deco2.className = 'section-svg-deco';
+
+            if (isEven) {
+                // Esquina superior izquierda
+                deco1.style.top = '0';
+                deco1.style.left = '0';
+                deco1.style.transform = 'translate(-15%, -15%) rotate(-5deg)';
+                // Esquina inferior derecha
+                deco2.style.bottom = '0';
+                deco2.style.right = '0';
+                deco2.style.transform = 'translate(15%, 15%) rotate(8deg)';
+            } else {
+                // Esquina superior derecha
+                deco1.style.top = '0';
+                deco1.style.right = '0';
+                deco1.style.transform = 'translate(15%, -15%) rotate(10deg)';
+                // Esquina inferior izquierda
+                deco2.style.bottom = '0';
+                deco2.style.left = '0';
+                deco2.style.transform = 'translate(-15%, 15%) rotate(-5deg)';
+            }
+
+            deco1.innerHTML = svgContent;
+            deco2.innerHTML = svgContent;
+            section.appendChild(deco1);
+            section.appendChild(deco2);
+        });
     </script>
 </body>
 </html>
