@@ -1011,138 +1011,103 @@
         renderCard();
         startAutoSlide();
 
-        // ---- Decoraciones en todas las secciones (excepto hero y footer) ----
-        // Definimos 6 patrones SVG distintos (formas libres, densas)
-        const patterns = [
-            // Patrón 1: puntos densos
-            `<svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="25" cy="30" r="4" fill="#FF3B5C"/>
-                <circle cx="55" cy="20" r="3" fill="#FF3B5C"/>
-                <circle cx="85" cy="35" r="4.5" fill="#FF3B5C"/>
-                <circle cx="115" cy="18" r="3" fill="#FF3B5C"/>
-                <circle cx="145" cy="28" r="4" fill="#FF3B5C"/>
-                <circle cx="175" cy="42" r="3.5" fill="#FF3B5C"/>
-                <circle cx="35" cy="70" r="4" fill="#FF3B5C"/>
-                <circle cx="65" cy="85" r="3" fill="#FF3B5C"/>
-                <circle cx="95" cy="65" r="4" fill="#FF3B5C"/>
-                <circle cx="125" cy="80" r="3.5" fill="#FF3B5C"/>
-                <circle cx="155" cy="72" r="4" fill="#FF3B5C"/>
-                <circle cx="45" cy="110" r="3" fill="#FF3B5C"/>
-                <circle cx="75" cy="125" r="4" fill="#FF3B5C"/>
-                <circle cx="105" cy="115" r="3.5" fill="#FF3B5C"/>
-                <circle cx="135" cy="130" r="4" fill="#FF3B5C"/>
-                <circle cx="165" cy="122" r="3" fill="#FF3B5C"/>
-                <circle cx="20" cy="160" r="4" fill="#FF3B5C"/>
-                <circle cx="50" cy="175" r="3.5" fill="#FF3B5C"/>
-                <circle cx="80" cy="168" r="4" fill="#FF3B5C"/>
-                <circle cx="110" cy="185" r="3" fill="#FF3B5C"/>
-                <circle cx="140" cy="172" r="4" fill="#FF3B5C"/>
-                <circle cx="170" cy="190" r="3.5" fill="#FF3B5C"/>
-            </svg>`,
-            // Patrón 2: rayas diagonales densas
-            `<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                <line x1="15" y1="20" x2="50" y2="55" stroke="#FF3B5C" stroke-width="2" stroke-linecap="round"/>
-                <line x1="45" y1="10" x2="80" y2="45" stroke="#FF3B5C" stroke-width="2" stroke-linecap="round"/>
-                <line x1="75" y1="30" x2="110" y2="65" stroke="#FF3B5C" stroke-width="1.8" stroke-linecap="round"/>
-                <line x1="105" y1="15" x2="140" y2="50" stroke="#FF3B5C" stroke-width="2" stroke-linecap="round"/>
-                <line x1="135" y1="35" x2="170" y2="70" stroke="#FF3B5C" stroke-width="1.8" stroke-linecap="round"/>
-                <line x1="165" y1="20" x2="195" y2="55" stroke="#FF3B5C" stroke-width="2" stroke-linecap="round"/>
-                <line x1="25" y1="85" x2="60" y2="120" stroke="#FF3B5C" stroke-width="2" stroke-linecap="round"/>
-                <line x1="55" y1="75" x2="90" y2="110" stroke="#FF3B5C" stroke-width="1.8" stroke-linecap="round"/>
-                <line x1="85" y1="95" x2="120" y2="130" stroke="#FF3B5C" stroke-width="2" stroke-linecap="round"/>
-                <line x1="115" y1="80" x2="150" y2="115" stroke="#FF3B5C" stroke-width="2" stroke-linecap="round"/>
-                <line x1="145" y1="100" x2="180" y2="135" stroke="#FF3B5C" stroke-width="1.8" stroke-linecap="round"/>
-                <line x1="175" y1="85" x2="195" y2="120" stroke="#FF3B5C" stroke-width="2" stroke-linecap="round"/>
-                <line x1="35" y1="150" x2="70" y2="185" stroke="#FF3B5C" stroke-width="2" stroke-linecap="round"/>
-                <line x1="65" y1="140" x2="100" y2="175" stroke="#FF3B5C" stroke-width="1.8" stroke-linecap="round"/>
-                <line x1="95" y1="160" x2="130" y2="195" stroke="#FF3B5C" stroke-width="2" stroke-linecap="round"/>
-                <line x1="125" y1="145" x2="160" y2="180" stroke="#FF3B5C" stroke-width="2" stroke-linecap="round"/>
-                <line x1="155" y1="165" x2="190" y2="195" stroke="#FF3B5C" stroke-width="1.8" stroke-linecap="round"/>
-            </svg>`,
-            // Patrón 3: triángulos densos
-            `<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                <polygon points="20,25 40,5 60,25" fill="#FF3B5C" opacity="0.6"/>
-                <polygon points="70,15 90,-5 110,15" fill="#FF3B5C" opacity="0.6"/>
-                <polygon points="120,30 140,10 160,30" fill="#FF3B5C" opacity="0.6"/>
-                <polygon points="170,20 190,0 200,20" fill="#FF3B5C" opacity="0.6"/>
-                <polygon points="35,75 55,55 75,75" fill="#FF3B5C" opacity="0.6"/>
-                <polygon points="85,65 105,45 125,65" fill="#FF3B5C" opacity="0.6"/>
-                <polygon points="135,80 155,60 175,80" fill="#FF3B5C" opacity="0.6"/>
-                <polygon points="25,135 45,115 65,135" fill="#FF3B5C" opacity="0.6"/>
-                <polygon points="75,125 95,105 115,125" fill="#FF3B5C" opacity="0.6"/>
-                <polygon points="125,140 145,120 165,140" fill="#FF3B5C" opacity="0.6"/>
-                <polygon points="175,130 195,110 200,130" fill="#FF3B5C" opacity="0.6"/>
-                <polygon points="40,185 60,165 80,185" fill="#FF3B5C" opacity="0.6"/>
-                <polygon points="90,175 110,155 130,175" fill="#FF3B5C" opacity="0.6"/>
-                <polygon points="140,190 160,170 180,190" fill="#FF3B5C" opacity="0.6"/>
-            </svg>`,
-            // Patrón 4: ondas + puntos densos
-            `<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                <path d="M15,25 Q35,10 55,25 Q75,40 95,25 Q115,10 135,25 Q155,40 175,25" stroke="#FF3B5C" fill="none" stroke-width="1.8" stroke-linecap="round"/>
-                <path d="M20,70 Q40,55 60,70 Q80,85 100,70 Q120,55 140,70 Q160,85 180,70" stroke="#FF3B5C" fill="none" stroke-width="1.8" stroke-linecap="round"/>
-                <path d="M25,115 Q45,100 65,115 Q85,130 105,115 Q125,100 145,115 Q165,130 185,115" stroke="#FF3B5C" fill="none" stroke-width="1.8" stroke-linecap="round"/>
-                <path d="M30,160 Q50,145 70,160 Q90,175 110,160 Q130,145 150,160 Q170,175 190,160" stroke="#FF3B5C" fill="none" stroke-width="1.8" stroke-linecap="round"/>
-                <circle cx="25" cy="20" r="3" fill="#FF3B5C"/>
-                <circle cx="85" cy="30" r="3" fill="#FF3B5C"/>
-                <circle cx="145" cy="22" r="3" fill="#FF3B5C"/>
-                <circle cx="55" cy="65" r="3" fill="#FF3B5C"/>
-                <circle cx="115" cy="78" r="3" fill="#FF3B5C"/>
-                <circle cx="175" cy="70" r="3" fill="#FF3B5C"/>
-                <circle cx="35" cy="110" r="3" fill="#FF3B5C"/>
-                <circle cx="95" cy="122" r="3" fill="#FF3B5C"/>
-                <circle cx="155" cy="115" r="3" fill="#FF3B5C"/>
-                <circle cx="45" cy="155" r="3" fill="#FF3B5C"/>
-                <circle cx="105" cy="168" r="3" fill="#FF3B5C"/>
-                <circle cx="165" cy="160" r="3" fill="#FF3B5C"/>
-            </svg>`,
-            // Patrón 5: círculos concéntricos densos
-            `<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="35" cy="40" r="12" stroke="#FF3B5C" stroke-width="1.5" fill="none"/>
-                <circle cx="35" cy="40" r="6" stroke="#FF3B5C" stroke-width="1.2" fill="none"/>
-                <circle cx="95" cy="30" r="15" stroke="#FF3B5C" stroke-width="1.5" fill="none"/>
-                <circle cx="95" cy="30" r="7" stroke="#FF3B5C" stroke-width="1.2" fill="none"/>
-                <circle cx="125" cy="90" r="18" stroke="#FF3B5C" stroke-width="1.5" fill="none"/>
-                <circle cx="125" cy="90" r="9" stroke="#FF3B5C" stroke-width="1.2" fill="none"/>
-                <circle cx="55" cy="110" r="12" stroke="#FF3B5C" stroke-width="1.5" fill="none"/>
-                <circle cx="55" cy="110" r="6" stroke="#FF3B5C" stroke-width="1.2" fill="none"/>
-                <circle cx="145" cy="150" r="14" stroke="#FF3B5C" stroke-width="1.5" fill="none"/>
-                <circle cx="145" cy="150" r="7" stroke="#FF3B5C" stroke-width="1.2" fill="none"/>
-                <circle cx="175" cy="170" r="10" stroke="#FF3B5C" stroke-width="1.5" fill="none"/>
-                <circle cx="175" cy="170" r="5" stroke="#FF3B5C" stroke-width="1.2" fill="none"/>
-            </svg>`,
-            // Patrón 6: líneas onduladas + puntos
-            `<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                <path d="M15,25 C30,15 45,35 60,25 C75,15 90,35 105,25" stroke="#FF3B5C" fill="none" stroke-width="1.8"/>
-                <path d="M20,60 C35,50 50,70 65,60 C80,50 95,70 110,60" stroke="#FF3B5C" fill="none" stroke-width="1.8"/>
-                <path d="M25,95 C40,85 55,105 70,95 C85,85 100,105 115,95" stroke="#FF3B5C" fill="none" stroke-width="1.8"/>
-                <path d="M30,130 C45,120 60,140 75,130 C90,120 105,140 120,130" stroke="#FF3B5C" fill="none" stroke-width="1.8"/>
-                <path d="M35,165 C50,155 65,175 80,165 C95,155 110,175 125,165" stroke="#FF3B5C" fill="none" stroke-width="1.8"/>
-                <circle cx="35" cy="20" r="3" fill="#FF3B5C"/>
-                <circle cx="85" cy="30" r="3" fill="#FF3B5C"/>
-                <circle cx="125" cy="50" r="3" fill="#FF3B5C"/>
-                <circle cx="45" cy="75" r="3" fill="#FF3B5C"/>
-                <circle cx="95" cy="85" r="3" fill="#FF3B5C"/>
-                <circle cx="145" cy="95" r="3" fill="#FF3B5C"/>
-                <circle cx="55" cy="110" r="3" fill="#FF3B5C"/>
-                <circle cx="105" cy="120" r="3" fill="#FF3B5C"/>
-                <circle cx="155" cy="130" r="3" fill="#FF3B5C"/>
-                <circle cx="65" cy="145" r="3" fill="#FF3B5C"/>
-                <circle cx="115" cy="155" r="3" fill="#FF3B5C"/>
-                <circle cx="165" cy="165" r="3" fill="#FF3B5C"/>
-            </svg>`
-        ];
+        // ---- Decoraciones en parejas de secciones ----
+        // Patrones orgánicos (forma libre) para cada par de secciones
+        const patternGroup1 = `<svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="25" cy="30" r="4" fill="#FF3B5C"/>
+            <circle cx="55" cy="20" r="3" fill="#FF3B5C"/>
+            <circle cx="85" cy="35" r="4.5" fill="#FF3B5C"/>
+            <circle cx="115" cy="18" r="3" fill="#FF3B5C"/>
+            <circle cx="145" cy="28" r="4" fill="#FF3B5C"/>
+            <circle cx="175" cy="42" r="3.5" fill="#FF3B5C"/>
+            <circle cx="35" cy="70" r="4" fill="#FF3B5C"/>
+            <circle cx="65" cy="85" r="3" fill="#FF3B5C"/>
+            <circle cx="95" cy="65" r="4" fill="#FF3B5C"/>
+            <circle cx="125" cy="80" r="3.5" fill="#FF3B5C"/>
+            <circle cx="155" cy="72" r="4" fill="#FF3B5C"/>
+            <circle cx="45" cy="110" r="3" fill="#FF3B5C"/>
+            <circle cx="75" cy="125" r="4" fill="#FF3B5C"/>
+            <circle cx="105" cy="115" r="3.5" fill="#FF3B5C"/>
+            <circle cx="135" cy="130" r="4" fill="#FF3B5C"/>
+            <circle cx="165" cy="122" r="3" fill="#FF3B5C"/>
+            <circle cx="20" cy="160" r="4" fill="#FF3B5C"/>
+            <circle cx="50" cy="175" r="3.5" fill="#FF3B5C"/>
+            <circle cx="80" cy="168" r="4" fill="#FF3B5C"/>
+            <circle cx="110" cy="185" r="3" fill="#FF3B5C"/>
+            <circle cx="140" cy="172" r="4" fill="#FF3B5C"/>
+            <circle cx="170" cy="190" r="3.5" fill="#FF3B5C"/>
+        </svg>`;
 
-        // Seleccionar todas las secciones dentro de main que no sean .hero ni footer
-        const allSections = Array.from(document.querySelectorAll('main > section:not(.hero)'));
-        allSections.forEach((section, idx) => {
-            // Evitar añadir duplicados (algunas ya tienen decoraciones manuales)
+        const patternGroup2 = `<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <line x1="15" y1="20" x2="50" y2="55" stroke="#FF3B5C" stroke-width="2" stroke-linecap="round"/>
+            <line x1="45" y1="10" x2="80" y2="45" stroke="#FF3B5C" stroke-width="2" stroke-linecap="round"/>
+            <line x1="75" y1="30" x2="110" y2="65" stroke="#FF3B5C" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="105" y1="15" x2="140" y2="50" stroke="#FF3B5C" stroke-width="2" stroke-linecap="round"/>
+            <line x1="135" y1="35" x2="170" y2="70" stroke="#FF3B5C" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="165" y1="20" x2="195" y2="55" stroke="#FF3B5C" stroke-width="2" stroke-linecap="round"/>
+            <line x1="25" y1="85" x2="60" y2="120" stroke="#FF3B5C" stroke-width="2" stroke-linecap="round"/>
+            <line x1="55" y1="75" x2="90" y2="110" stroke="#FF3B5C" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="85" y1="95" x2="120" y2="130" stroke="#FF3B5C" stroke-width="2" stroke-linecap="round"/>
+            <line x1="115" y1="80" x2="150" y2="115" stroke="#FF3B5C" stroke-width="2" stroke-linecap="round"/>
+            <line x1="145" y1="100" x2="180" y2="135" stroke="#FF3B5C" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="175" y1="85" x2="195" y2="120" stroke="#FF3B5C" stroke-width="2" stroke-linecap="round"/>
+            <line x1="35" y1="150" x2="70" y2="185" stroke="#FF3B5C" stroke-width="2" stroke-linecap="round"/>
+            <line x1="65" y1="140" x2="100" y2="175" stroke="#FF3B5C" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="95" y1="160" x2="130" y2="195" stroke="#FF3B5C" stroke-width="2" stroke-linecap="round"/>
+            <line x1="125" y1="145" x2="160" y2="180" stroke="#FF3B5C" stroke-width="2" stroke-linecap="round"/>
+            <line x1="155" y1="165" x2="190" y2="195" stroke="#FF3B5C" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>`;
+
+        const patternGroup3 = `<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15,25 Q35,10 55,25 Q75,40 95,25 Q115,10 135,25 Q155,40 175,25" stroke="#FF3B5C" fill="none" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M20,70 Q40,55 60,70 Q80,85 100,70 Q120,55 140,70 Q160,85 180,70" stroke="#FF3B5C" fill="none" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M25,115 Q45,100 65,115 Q85,130 105,115 Q125,100 145,115 Q165,130 185,115" stroke="#FF3B5C" fill="none" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M30,160 Q50,145 70,160 Q90,175 110,160 Q130,145 150,160 Q170,175 190,160" stroke="#FF3B5C" fill="none" stroke-width="1.8" stroke-linecap="round"/>
+            <circle cx="25" cy="20" r="3" fill="#FF3B5C"/>
+            <circle cx="85" cy="30" r="3" fill="#FF3B5C"/>
+            <circle cx="145" cy="22" r="3" fill="#FF3B5C"/>
+            <circle cx="55" cy="65" r="3" fill="#FF3B5C"/>
+            <circle cx="115" cy="78" r="3" fill="#FF3B5C"/>
+            <circle cx="175" cy="70" r="3" fill="#FF3B5C"/>
+            <circle cx="35" cy="110" r="3" fill="#FF3B5C"/>
+            <circle cx="95" cy="122" r="3" fill="#FF3B5C"/>
+            <circle cx="155" cy="115" r="3" fill="#FF3B5C"/>
+            <circle cx="45" cy="155" r="3" fill="#FF3B5C"/>
+            <circle cx="105" cy="168" r="3" fill="#FF3B5C"/>
+            <circle cx="165" cy="160" r="3" fill="#FF3B5C"/>
+        </svg>`;
+
+        const patternGroup4 = `<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="20,25 40,5 60,25" fill="#FF3B5C" opacity="0.6"/>
+            <polygon points="70,15 90,-5 110,15" fill="#FF3B5C" opacity="0.6"/>
+            <polygon points="120,30 140,10 160,30" fill="#FF3B5C" opacity="0.6"/>
+            <polygon points="170,20 190,0 200,20" fill="#FF3B5C" opacity="0.6"/>
+            <polygon points="35,75 55,55 75,75" fill="#FF3B5C" opacity="0.6"/>
+            <polygon points="85,65 105,45 125,65" fill="#FF3B5C" opacity="0.6"/>
+            <polygon points="135,80 155,60 175,80" fill="#FF3B5C" opacity="0.6"/>
+            <polygon points="25,135 45,115 65,135" fill="#FF3B5C" opacity="0.6"/>
+            <polygon points="75,125 95,105 115,125" fill="#FF3B5C" opacity="0.6"/>
+            <polygon points="125,140 145,120 165,140" fill="#FF3B5C" opacity="0.6"/>
+            <polygon points="175,130 195,110 200,130" fill="#FF3B5C" opacity="0.6"/>
+            <polygon points="40,185 60,165 80,185" fill="#FF3B5C" opacity="0.6"/>
+            <polygon points="90,175 110,155 130,175" fill="#FF3B5C" opacity="0.6"/>
+            <polygon points="140,190 160,170 180,190" fill="#FF3B5C" opacity="0.6"/>
+        </svg>`;
+
+        // Lista de secciones (excluyendo hero y footer)
+        const sections = Array.from(document.querySelectorAll('main > section:not(.hero)'));
+        // Agrupar en pares: [0,1], [2,3], [4,5], [6,7]
+        const groupPatterns = [patternGroup1, patternGroup2, patternGroup3, patternGroup4];
+
+        sections.forEach((section, idx) => {
+            // Evitar duplicar decoraciones ya existentes
             if (section.querySelector('.section-svg-deco')) return;
 
-            // Elegir patrón cíclicamente
-            const patternIdx = idx % patterns.length;
-            const svgContent = patterns[patternIdx];
+            const groupIndex = Math.floor(idx / 2);
+            const pattern = groupPatterns[groupIndex % groupPatterns.length];
 
-            // Determinar posición según índice: pares -> top-left & bottom-right; impares -> top-right & bottom-left
+            // Alternar posición: pares (0,2,4,6) -> esquina superior izquierda + inferior derecha
+            // impares (1,3,5,7) -> esquina superior derecha + inferior izquierda
             const isEven = idx % 2 === 0;
 
             const deco1 = document.createElement('div');
@@ -1151,27 +1116,23 @@
             deco2.className = 'section-svg-deco';
 
             if (isEven) {
-                // Esquina superior izquierda
                 deco1.style.top = '0';
                 deco1.style.left = '0';
                 deco1.style.transform = 'translate(-15%, -15%) rotate(-5deg)';
-                // Esquina inferior derecha
                 deco2.style.bottom = '0';
                 deco2.style.right = '0';
                 deco2.style.transform = 'translate(15%, 15%) rotate(8deg)';
             } else {
-                // Esquina superior derecha
                 deco1.style.top = '0';
                 deco1.style.right = '0';
                 deco1.style.transform = 'translate(15%, -15%) rotate(10deg)';
-                // Esquina inferior izquierda
                 deco2.style.bottom = '0';
                 deco2.style.left = '0';
                 deco2.style.transform = 'translate(-15%, 15%) rotate(-5deg)';
             }
 
-            deco1.innerHTML = svgContent;
-            deco2.innerHTML = svgContent;
+            deco1.innerHTML = pattern;
+            deco2.innerHTML = pattern;
             section.appendChild(deco1);
             section.appendChild(deco2);
         });
