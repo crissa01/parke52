@@ -24,6 +24,11 @@
             box-sizing: border-box;
         }
 
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+        }
+
         html {
             scroll-behavior: smooth;
         }
@@ -33,7 +38,6 @@
             background-color: var(--bg-light);
             color: var(--text-main);
             line-height: 1.5;
-            overflow-x: hidden;
         }
 
         /* Títulos y elementos destacados */
@@ -136,9 +140,10 @@
             margin: 0 auto;
             position: relative;
             z-index: 2;
+            width: 100%;
         }
 
-        /* Decoraciones con imágenes - más pequeñas */
+        /* Decoraciones con imágenes */
         .section-img-deco {
             position: absolute;
             width: 280px;
@@ -344,7 +349,6 @@
             margin-right: auto;
         }
 
-        /* Estilo para texto "Parke52" dentro de títulos (usamos la clase brand-text) */
         .section-title .brand-text {
             font-weight: 700;
         }
@@ -675,6 +679,7 @@
             font-size: 1rem;
         }
 
+        /* Ajustes móviles */
         @media (max-width: 768px) {
             .nav-links {
                 gap: 1rem;
@@ -750,10 +755,11 @@
             .hero-right {
                 margin-top: 1.5rem;
             }
+            /* Decoraciones más pequeñas y con menos desplazamiento para evitar scroll */
             .section-img-deco {
-                width: 200px;
-                height: 160px;
-                opacity: 0.35;
+                width: 120px;
+                height: 100px;
+                opacity: 0.3;
             }
         }
     </style>
@@ -783,7 +789,7 @@
                 <div class="hero-left">
                     <div class="hero-text">
                         <h1>
-                            <img src="logosinfondo.png" alt="Parke52" class="hero-title-img"><br>
+                            <img src="parke52-logo.png" alt="Parke52" class="hero-title-img"><br>
                             La plataforma que moderniza la experiencia completa de tu parque de diversiones
                         </h1>
                         <div class="hero-sub-container">
@@ -806,12 +812,12 @@
                     </div>
                 </div>
                 <div class="hero-right">
-                    <img src="parque.png" alt="Familia feliz en un parque de diversiones" loading="lazy">
+                    <img src="https://images.pexels.com/photos/163439/pexels-photo-163439.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Familia feliz en un parque de diversiones" loading="lazy">
                 </div>
             </div>
         </section>
 
-        <!-- Sección 1: Experiencia conectada (decoraciones en parte inferior) -->
+        <!-- Sección 1: Experiencia conectada -->
         <section id="experiencia-conectada" style="background-color: var(--bg-light);">
             <div class="container">
                 <div class="title-wrapper">
@@ -829,7 +835,7 @@
             </div>
         </section>
 
-        <!-- Sección 2: Una sola plataforma (decoración inferior derecha) -->
+        <!-- Sección 2: Una sola plataforma -->
         <section id="plataforma" style="background-color: var(--bg-alt);">
             <div class="container">
                 <div class="title-wrapper">
@@ -847,7 +853,7 @@
             </div>
         </section>
 
-        <!-- Sección 3: La tecnología también puede sentirse divertida (decoración inferior izquierda) -->
+        <!-- Sección 3: La tecnología también puede sentirse divertida -->
         <section style="background-color: var(--bg-light);">
             <div class="container">
                 <div class="title-wrapper">
@@ -885,7 +891,7 @@
             </div>
         </section>
 
-        <!-- Sección 4: Beneficios reales (decoración inferior derecha) -->
+        <!-- Sección 4: Beneficios reales -->
         <section id="beneficios-gestion" style="background-color: var(--bg-alt);">
             <div class="container">
                 <div class="title-wrapper">
@@ -948,7 +954,7 @@
             </div>
         </section>
 
-        <!-- Sección 6: Adaptable (decoración solo lateral derecho) -->
+        <!-- Sección 6: Adaptable -->
         <section style="background-color: var(--bg-alt);">
             <div class="container adaptable-wrapper">
                 <div class="adaptable-title">
@@ -967,7 +973,7 @@
             </div>
         </section>
 
-        <!-- Sección 7: Diferenciadores (decoración en esquina superior derecha, se mantiene) -->
+        <!-- Sección 7: Diferenciadores -->
         <section id="diferenciadores" style="background-color: var(--bg-light);">
             <div class="container">
                 <div class="title-wrapper">
@@ -989,7 +995,7 @@
             </div>
         </section>
 
-        <!-- Sección 8: CTA final (decoración lateral derecho e izquierdo, se mantiene) -->
+        <!-- Sección 8: CTA final -->
         <section id="demo" style="background-color: var(--bg-alt);">
             <div class="container" style="text-align: center;">
                 <div class="title-wrapper">
@@ -1134,7 +1140,7 @@
         renderCard();
         startAutoSlide();
 
-        // Decoraciones con imágenes personalizadas por sección - nuevas posiciones
+        // Decoraciones con imágenes personalizadas por sección - ajuste móvil sin scroll
         const imagenesPorSeccion = [
             "imagen-seccion1.png", "imagen-seccion2.png", "imagen-seccion3.png",
             "imagen-seccion4.png", "imagen-seccion5.png", "imagen-seccion6.png",
@@ -1158,6 +1164,15 @@
             return div;
         }
 
+        // Obtener offset según dispositivo
+        function getOffsetAndRotate() {
+            const isMobile = window.innerWidth <= 768;
+            // En móvil el offset es muy pequeño para evitar scroll
+            const offset = isMobile ? '5%' : '25%';
+            const rotate = isMobile ? '2deg' : '5deg';
+            return { offset, rotate };
+        }
+
         sections.forEach((section, idx) => {
             if (section.querySelector('.section-img-deco')) return;
 
@@ -1165,64 +1180,65 @@
             if (!imgSrc) return;
 
             const id = section.id;
+            const { offset, rotate } = getOffsetAndRotate();
 
-            // Experiencia conectada: dos decoraciones en parte inferior (izquierda y derecha)
+            // Experiencia conectada: dos decoraciones en parte inferior
             if (id === 'experiencia-conectada') {
-                const deco1 = crearImagen(imgSrc, undefined, undefined, '0', '0', 'translateX(-30%) rotate(-5deg)');
-                const deco2 = crearImagen(imgSrc, undefined, '0', '0', undefined, 'translateX(30%) rotate(5deg)');
+                const deco1 = crearImagen(imgSrc, undefined, undefined, '0', '0', `translateX(-${offset}) rotate(-${rotate})`);
+                const deco2 = crearImagen(imgSrc, undefined, '0', '0', undefined, `translateX(${offset}) rotate(${rotate})`);
                 section.appendChild(deco1);
                 section.appendChild(deco2);
             }
-            // Una sola plataforma: decoración en esquina inferior derecha
+            // Una sola plataforma: inferior derecha
             else if (id === 'plataforma') {
-                const deco = crearImagen(imgSrc, undefined, '0', '0', undefined, 'translateX(30%) rotate(5deg)');
+                const deco = crearImagen(imgSrc, undefined, '0', '0', undefined, `translateX(${offset}) rotate(${rotate})`);
                 section.appendChild(deco);
             }
-            // La tecnología también puede sentirse divertida: decoración en esquina inferior izquierda
+            // La tecnología: inferior izquierda
             else if (section.querySelector('.tech-grid') !== null && !id) {
-                const deco = crearImagen(imgSrc, undefined, undefined, '0', '0', 'translateX(-30%) rotate(-5deg)');
+                const deco = crearImagen(imgSrc, undefined, undefined, '0', '0', `translateX(-${offset}) rotate(-${rotate})`);
                 section.appendChild(deco);
             }
-            // Beneficios reales: decoración en esquina inferior derecha
+            // Beneficios reales: inferior derecha
             else if (id === 'beneficios-gestion') {
-                const deco = crearImagen(imgSrc, undefined, '0', '0', undefined, 'translateX(30%) rotate(5deg)');
+                const deco = crearImagen(imgSrc, undefined, '0', '0', undefined, `translateX(${offset}) rotate(${rotate})`);
                 section.appendChild(deco);
             }
-            // Así se vive Parke52: esquina superior izquierda y derecha (se mantiene)
+            // Así se vive: superior izquierda y derecha
             else if (id === 'recorrido') {
-                const deco1 = crearImagen(imgSrc, '0', undefined, undefined, '0', 'translateX(-30%) rotate(-5deg)');
-                const deco2 = crearImagen(imgSrc, '0', '0', undefined, undefined, 'translateX(30%) rotate(5deg)');
+                const deco1 = crearImagen(imgSrc, '0', undefined, undefined, '0', `translateX(-${offset}) rotate(-${rotate})`);
+                const deco2 = crearImagen(imgSrc, '0', '0', undefined, undefined, `translateX(${offset}) rotate(${rotate})`);
                 section.appendChild(deco1);
                 section.appendChild(deco2);
             }
-            // Adaptable: solo lateral derecho (centrado vertical)
+            // Adaptable: solo lateral derecho
             else if (section.querySelector('.adaptable-wrapper') !== null && !id) {
-                const decoDer = crearImagen(imgSrc, '50%', '0', undefined, undefined, 'translate(50%, -50%) rotate(8deg)');
+                const decoDer = crearImagen(imgSrc, '50%', '0', undefined, undefined, `translate(${offset}, -50%) rotate(${rotate})`);
                 section.appendChild(decoDer);
             }
-            // Diferenciadores: esquina superior derecha (se mantiene)
+            // Diferenciadores: esquina superior izquierda
             else if (id === 'diferenciadores') {
-                const deco = crearImagen(imgSrc, '0', '0', undefined, undefined, 'translateX(30%) rotate(5deg)');
+                const deco = crearImagen(imgSrc, '0', undefined, undefined, '0', `translateX(-${offset}) rotate(-${rotate})`);
                 section.appendChild(deco);
             }
-            // CTA final: lateral derecho e izquierdo (se mantiene)
+            // CTA final: lateral derecho e izquierdo
             else if (id === 'demo') {
-                const decoIzq = crearImagen(imgSrc, '50%', undefined, undefined, '0', 'translate(-50%, -50%) rotate(-8deg)');
-                const decoDer = crearImagen(imgSrc, '50%', '0', undefined, undefined, 'translate(50%, -50%) rotate(8deg)');
+                const decoIzq = crearImagen(imgSrc, '50%', undefined, undefined, '0', `translate(-${offset}, -50%) rotate(-${rotate})`);
+                const decoDer = crearImagen(imgSrc, '50%', '0', undefined, undefined, `translate(${offset}, -50%) rotate(${rotate})`);
                 section.appendChild(decoIzq);
                 section.appendChild(decoDer);
             }
-            // Fallback para cualquier otra sección (no debería ocurrir)
+            // Fallback
             else {
                 const isEven = idx % 2 === 0;
                 if (isEven) {
-                    const deco1 = crearImagen(imgSrc, '0', undefined, undefined, '0', 'translateX(-30%) rotate(-5deg)');
-                    const deco2 = crearImagen(imgSrc, undefined, '0', '0', undefined, 'translateX(30%) rotate(8deg)');
+                    const deco1 = crearImagen(imgSrc, '0', undefined, undefined, '0', `translateX(-${offset}) rotate(-${rotate})`);
+                    const deco2 = crearImagen(imgSrc, undefined, '0', '0', undefined, `translateX(${offset}) rotate(${rotate})`);
                     section.appendChild(deco1);
                     section.appendChild(deco2);
                 } else {
-                    const deco1 = crearImagen(imgSrc, '0', '0', undefined, undefined, 'translateX(30%) rotate(5deg)');
-                    const deco2 = crearImagen(imgSrc, undefined, undefined, '0', '0', 'translateX(-30%) rotate(-5deg)');
+                    const deco1 = crearImagen(imgSrc, '0', '0', undefined, undefined, `translateX(${offset}) rotate(${rotate})`);
+                    const deco2 = crearImagen(imgSrc, undefined, undefined, '0', '0', `translateX(-${offset}) rotate(-${rotate})`);
                     section.appendChild(deco1);
                     section.appendChild(deco2);
                 }
