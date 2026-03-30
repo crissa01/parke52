@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Parke52 | La experiencia inteligente para parques de diversiones</title>
-    <!-- Google Fonts & Font Awesome 6 -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -40,21 +39,18 @@
             line-height: 1.5;
         }
 
-        /* Títulos y elementos destacados */
         h1, h2, h3, .section-title, .btn-primary, .btn-secondary, .nav-links a, .badge-icon p {
             font-family: 'Oswald', 'Impact', 'Haettenschweiler', 'Arial Black', sans-serif;
             font-weight: 600;
             letter-spacing: 0.03em;
         }
 
-        /* Subtítulos y textos largos */
         .hero-sub, .section-sub, .card-value p, .tech-card p, .step p, .footer p, .footer-links-col a, .badge-type {
             font-family: 'Inter', sans-serif;
             font-weight: 400;
             letter-spacing: normal;
         }
 
-        /* Estilo para el texto "Parke52" donde la palabra Parke es negrita y el 52 rojo */
         .brand-text {
             font-weight: 700;
             font-family: 'Oswald', 'Impact', 'Haettenschweiler', 'Arial Black', sans-serif;
@@ -67,7 +63,7 @@
             scroll-margin-top: 85px;
         }
 
-        /* HEADER */
+        /* Header */
         .header {
             position: fixed;
             top: 0;
@@ -143,7 +139,6 @@
             width: 100%;
         }
 
-        /* Decoraciones con imágenes */
         .section-img-deco {
             position: absolute;
             width: 280px;
@@ -159,7 +154,6 @@
             object-fit: contain;
         }
 
-        /* Hero con gradiente más notorio */
         .hero {
             background: linear-gradient(145deg, #ffffff 0%, #ececec 100%);
             text-align: left;
@@ -259,7 +253,6 @@
             vertical-align: middle;
         }
 
-        /* Contenedor para la barra vertical que se adapta a la altura del texto */
         .hero-sub-container {
             display: flex;
             align-items: flex-start;
@@ -366,7 +359,6 @@
             color: #1E2F3F;
         }
 
-        /* Tarjetas con borde más oscuro y sombra */
         .card-value, .module-card, .carousel-card, .tech-card, .step, .highlight-item {
             transition: transform 0.25s ease, box-shadow 0.25s ease;
             border: 1px solid #d0d0d0;
@@ -678,8 +670,7 @@
             margin-top: 1rem;
             font-size: 1rem;
         }
-
-        /* Ajustes móviles */
+        
         @media (max-width: 768px) {
             .nav-links {
                 gap: 1rem;
@@ -755,7 +746,6 @@
             .hero-right {
                 margin-top: 1.5rem;
             }
-            /* Decoraciones más pequeñas y con menos desplazamiento para evitar scroll */
             .section-img-deco {
                 width: 120px;
                 height: 100px;
@@ -783,7 +773,6 @@
     </header>
 
     <main class="main-content">
-        <!-- Hero -->
         <section id="hero-top" class="hero">
             <div class="container hero-grid">
                 <div class="hero-left">
@@ -995,7 +984,7 @@
             </div>
         </section>
 
-        <!-- Sección 8: CTA final -->
+        <!-- Sección 8 -->
         <section id="demo" style="background-color: var(--bg-alt);">
             <div class="container" style="text-align: center;">
                 <div class="title-wrapper">
@@ -1140,7 +1129,6 @@
         renderCard();
         startAutoSlide();
 
-        // Decoraciones con imágenes personalizadas por sección - ajuste móvil sin scroll
         const imagenesPorSeccion = [
             "imagen-seccion1.png", "imagen-seccion2.png", "imagen-seccion3.png",
             "imagen-seccion4.png", "imagen-seccion5.png", "imagen-seccion6.png",
@@ -1228,7 +1216,6 @@
                 section.appendChild(decoIzq);
                 section.appendChild(decoDer);
             }
-            // Fallback
             else {
                 const isEven = idx % 2 === 0;
                 if (isEven) {
