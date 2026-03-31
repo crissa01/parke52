@@ -39,22 +39,21 @@
             line-height: 1.5;
         }
 
-        h1, h2, h3, .section-title, .btn-primary, .btn-secondary, .nav-links a, .badge-icon p {
+        /* Títulos con tipografía cuadrada y mayúsculas */
+        h1, h2, h3, .section-title, .btn-primary, .btn-secondary, .nav-links a, .badge-icon p, .brand-text {
             font-family: 'Oswald', 'Impact', 'Haettenschweiler', 'Arial Black', sans-serif;
             font-weight: 600;
             letter-spacing: 0.03em;
+            text-transform: uppercase;
         }
 
         .hero-sub, .section-sub, .card-value p, .tech-card p, .step p, .footer p, .footer-links-col a, .badge-type {
             font-family: 'Inter', sans-serif;
             font-weight: 400;
             letter-spacing: normal;
+            text-transform: none;
         }
 
-        .brand-text {
-            font-weight: 700;
-            font-family: 'Oswald', 'Impact', 'Haettenschweiler', 'Arial Black', sans-serif;
-        }
         .brand-text .number {
             color: var(--brand-red);
         }
@@ -63,7 +62,7 @@
             scroll-margin-top: 85px;
         }
 
-        /* Header */
+        /* Header: enlaces a la derecha */
         .header {
             position: fixed;
             top: 0;
@@ -102,11 +101,10 @@
         }
 
         .nav-links {
-            flex: 1;
             display: flex;
-            justify-content: center;
-            gap: 2rem;
+            gap: 1.8rem;
             align-items: center;
+            flex-wrap: wrap;
         }
 
         .nav-links a {
@@ -178,10 +176,12 @@
             flex: 0.9;
         }
 
+        /* Imagen con bordes cuadrados y borde gris */
         .hero-right img {
             width: 100%;
             height: auto;
-            border-radius: 32px;
+            border-radius: 0;
+            border: 1px solid #cccccc;
             box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s ease;
         }
@@ -202,6 +202,42 @@
             margin-top: 2.5rem;
         }
 
+        /* Botones estilo racing */
+        .btn-primary, .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0.9rem 1.8rem;
+            font-weight: 700;
+            font-family: 'Oswald', 'Impact', sans-serif;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+            clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);
+        }
+        .btn-primary {
+            background-color: var(--brand-red);
+            color: white;
+            box-shadow: 0 4px 12px rgba(227, 30, 36, 0.3);
+        }
+        .btn-primary:hover {
+            background-color: #c01a20;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(227, 30, 36, 0.4);
+        }
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--brand-red);
+            color: var(--brand-red);
+        }
+        .btn-secondary:hover {
+            background: rgba(227, 30, 36, 0.1);
+            transform: translateY(-2px);
+        }
+
         .hero-visual {
             display: flex;
             flex-wrap: wrap;
@@ -210,15 +246,18 @@
             margin-top: 2rem;
         }
 
+        /* Tarjetas de la sección hero (badge-icon) con borde inferior rojo */
         .badge-icon {
             background: white;
-            border-radius: 32px;
+            border-radius: 0;
             box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.1);
             padding: 0.8rem 1rem;
             text-align: center;
             width: 110px;
             transition: transform 0.25s ease, box-shadow 0.25s ease;
             border: 1px solid #e0e0e0;
+            border-bottom: 3px solid var(--brand-red);
+            clip-path: polygon(8% 0%, 100% 0%, 92% 100%, 0% 100%);
         }
         .badge-icon:hover {
             transform: translateY(-5px);
@@ -263,7 +302,7 @@
             width: 4px;
             background-color: var(--brand-red);
             align-self: stretch;
-            border-radius: 2px;
+            border-radius: 0;
         }
         .hero-sub-text {
             font-size: 1.3rem;
@@ -274,53 +313,12 @@
             margin: 0;
         }
 
-        .btn-primary {
-            background: var(--brand-red);
-            border: none;
-            padding: 0.9rem 1.8rem;
-            border-radius: 50px;
-            font-weight: 600;
-            color: white;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.2s;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            text-decoration: none;
-            box-shadow: 0 4px 15px rgba(227, 30, 36, 0.3);
-        }
-
-        .btn-primary:hover {
-            background: #c01a20;
-            transform: translateY(-2px);
-            box-shadow: 0 12px 18px -10px var(--brand-red);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            border: 2px solid var(--brand-red);
-            padding: 0.9rem 1.8rem;
-            border-radius: 50px;
-            font-weight: 600;
-            color: var(--brand-red);
-            transition: all 0.2s;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .btn-secondary:hover {
-            background: #FFF0F3;
-            transform: translateY(-2px);
-        }
-
         .title-wrapper {
             text-align: center;
             margin-bottom: 1.5rem;
         }
 
+        /* Títulos: solo barra lateral izquierda, sin subrayado */
         .section-title {
             font-size: 2.5rem;
             font-weight: 600;
@@ -330,20 +328,11 @@
             text-align: left;
             margin-bottom: 0.5rem;
             position: relative;
+            border-left: 6px solid var(--brand-red);
+            padding-left: 20px;
         }
-
         .section-title::after {
-            content: '';
-            display: block;
-            width: 33%;
-            border-bottom: 4px solid var(--brand-red);
-            margin-top: 0.5rem;
-            margin-left: 0;
-            margin-right: auto;
-        }
-
-        .section-title .brand-text {
-            font-weight: 700;
+            display: none;
         }
 
         .section-sub {
@@ -359,12 +348,15 @@
             color: #1E2F3F;
         }
 
-        .card-value, .module-card, .carousel-card, .tech-card, .step, .highlight-item {
+        /* Tarjetas generales con borde izquierdo rojo (excepto steps que se modifica) */
+        .card-value, .module-card, .carousel-card, .tech-card, .highlight-item {
             transition: transform 0.25s ease, box-shadow 0.25s ease;
             border: 1px solid #d0d0d0;
+            border-left: 5px solid var(--brand-red);
             box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.15);
+            border-radius: 0;
         }
-        .card-value:hover, .module-card:hover, .carousel-card:hover, .tech-card:hover, .step:hover, .highlight-item:hover {
+        .card-value:hover, .module-card:hover, .carousel-card:hover, .tech-card:hover, .highlight-item:hover {
             transform: translateY(-5px);
             box-shadow: 0 25px 35px -12px rgba(0, 0, 0, 0.2);
         }
@@ -377,7 +369,7 @@
 
         .card-value {
             background: var(--card-white);
-            border-radius: 28px;
+            border-radius: 0;
             padding: 1.8rem;
             text-align: center;
         }
@@ -399,7 +391,7 @@
 
         .carousel-card {
             background: var(--card-white);
-            border-radius: 32px;
+            border-radius: 0;
             padding: 2.8rem 2.5rem;
             text-align: center;
             width: 100%;
@@ -411,7 +403,7 @@
             font-size: 3.2rem;
             background: #FFF0F3;
             padding: 1rem;
-            border-radius: 60px;
+            border-radius: 0;
             color: var(--brand-red);
             margin-bottom: 1.2rem;
             display: inline-block;
@@ -454,7 +446,6 @@
             border: none;
             width: 50px;
             height: 50px;
-            border-radius: 50%;
             color: white;
             font-size: 1.5rem;
             cursor: pointer;
@@ -462,6 +453,7 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
+            clip-path: polygon(15% 0%, 100% 0%, 85% 100%, 0% 100%);
         }
         .carousel-btn:hover {
             background: #c01a20;
@@ -474,17 +466,17 @@
             margin-top: 2rem;
         }
         .dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
+            width: 12px;
+            height: 12px;
             background-color: #FFB6C1;
             cursor: pointer;
             transition: 0.2s;
+            clip-path: polygon(20% 0%, 100% 0%, 80% 100%, 0% 100%);
+            border-radius: 0;
         }
         .dot.active {
             background-color: var(--brand-red);
             width: 24px;
-            border-radius: 12px;
         }
 
         .tech-grid {
@@ -503,7 +495,7 @@
         }
         .tech-card {
             background: var(--card-white);
-            border-radius: 28px;
+            border-radius: 0;
             padding: 1.5rem;
             text-align: center;
         }
@@ -521,6 +513,7 @@
             font-size: 0.9rem;
         }
 
+        /* Sección "Así se vive Parke52": tarjetas con borde superior rojo, sin borde izquierdo */
         .steps {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
@@ -529,14 +522,22 @@
         }
         .step {
             background: var(--card-white);
-            border-radius: 30px;
+            border-radius: 0;
             padding: 1.5rem 1rem;
             text-align: center;
+            border: 1px solid #d0d0d0;
             border-top: 5px solid var(--brand-red);
+            border-left: none;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             height: 100%;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.15);
+        }
+        .step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 35px -12px rgba(0, 0, 0, 0.2);
         }
         .step-num {
             font-size: 2rem;
@@ -551,12 +552,12 @@
         .step p {
             font-size: 0.9rem;
             color: #4f5f6f;
-            margin-bottom: 0;
+            margin-bottom: 0.75rem;
         }
         .step i {
             font-size: 1.8rem;
             color: var(--brand-red);
-            margin-top: 1.8rem;
+            margin-top: 0.5rem;
             margin-bottom: 0;
         }
 
@@ -576,6 +577,7 @@
             }
         }
 
+        /* Sección adaptable: título con barra lateral izquierda, badges con borde inferior rojo */
         .adaptable-wrapper {
             display: flex;
             flex-wrap: wrap;
@@ -585,46 +587,47 @@
         }
         .adaptable-title {
             flex: 1;
-            text-align: center;
+            text-align: left;
         }
         .adaptable-title h2 {
             font-size: 2.2rem;
             font-weight: 700;
             color: var(--text-main);
             margin: 0;
+            border-left: 6px solid var(--brand-red);
+            padding-left: 20px;
         }
         .adaptable-badges {
             flex: 1.5;
             display: flex;
-            justify-content: center;
+            justify-content: flex-end;
         }
         .badge-list {
             display: flex;
             flex-wrap: wrap;
-            justify-content: center;
+            justify-content: flex-end;
             gap: 1rem;
             margin: 0;
         }
         .badge-type {
             background: #ffffff;
             padding: 0.6rem 1.4rem;
-            border-radius: 40px;
             font-weight: 500;
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
             font-family: 'Inter', sans-serif;
             color: #333;
-            border: 1px solid #6c757d;
+            border-bottom: 3px solid var(--brand-red);
+            border-left: none;
+            border-top: 1px solid #ddd;
+            border-right: 1px solid #ddd;
             box-shadow: 0 2px 6px rgba(0,0,0,0.05);
             transition: transform 0.2s, box-shadow 0.2s;
         }
         .badge-type:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 15px rgba(0,0,0,0.1);
-        }
-        .badge-type i {
-            display: none;
         }
 
         .footer {
@@ -647,12 +650,14 @@
             flex-direction: column;
             gap: 0.5rem;
         }
+        /* Enlaces del footer en mayúsculas */
         .footer-links-col a {
             color: #C7D0D9;
             text-decoration: none;
             transition: color 0.2s;
             font-family: 'Inter', sans-serif;
             font-weight: 500;
+            text-transform: uppercase;
         }
         .footer-links-col a:hover {
             color: var(--brand-red);
@@ -685,9 +690,6 @@
             .section-title {
                 font-size: 2rem;
             }
-            .section-title::after {
-                width: 33%;
-            }
             .header {
                 padding: 0.7rem 1rem;
             }
@@ -696,6 +698,7 @@
             }
             .nav-container {
                 flex-direction: column;
+                align-items: center;
                 gap: 0.8rem;
             }
             .nav-links {
@@ -719,8 +722,20 @@
                 flex-direction: column;
                 text-align: center;
             }
+            .adaptable-title {
+                text-align: center;
+            }
             .adaptable-title h2 {
-                margin-bottom: 1rem;
+                border-left: none;
+                border-top: 4px solid var(--brand-red);
+                padding-left: 0;
+                padding-top: 15px;
+            }
+            .adaptable-badges {
+                justify-content: center;
+            }
+            .badge-list {
+                justify-content: center;
             }
             .footer-grid {
                 flex-direction: column;
@@ -768,7 +783,6 @@
                 <a href="#diferenciadores">¿Por qué Parke52?</a>
                 <a href="#contacto-footer">Contacto</a>
             </div>
-            <div style="width: 0;"></div>
         </div>
     </header>
 
@@ -899,7 +913,7 @@
             </div>
         </section>
 
-        <!-- Sección 5: Así se vive Parke52 -->
+        <!-- Sección 5: Así se vive Parke52 (tarjetas con borde superior rojo) -->
         <section id="recorrido" style="background-color: var(--bg-light);">
             <div class="container">
                 <div class="title-wrapper">
@@ -1129,6 +1143,7 @@
         renderCard();
         startAutoSlide();
 
+        // Decoraciones (igual que original)
         const imagenesPorSeccion = [
             "imagen-seccion1.png", "imagen-seccion2.png", "imagen-seccion3.png",
             "imagen-seccion4.png", "imagen-seccion5.png", "imagen-seccion6.png",
@@ -1152,10 +1167,8 @@
             return div;
         }
 
-        // Obtener offset según dispositivo
         function getOffsetAndRotate() {
             const isMobile = window.innerWidth <= 768;
-            // En móvil el offset es muy pequeño para evitar scroll
             const offset = isMobile ? '5%' : '25%';
             const rotate = isMobile ? '2deg' : '5deg';
             return { offset, rotate };
@@ -1163,53 +1176,42 @@
 
         sections.forEach((section, idx) => {
             if (section.querySelector('.section-img-deco')) return;
-
             const imgSrc = imagenesPorSeccion[idx];
             if (!imgSrc) return;
-
             const id = section.id;
             const { offset, rotate } = getOffsetAndRotate();
-
-            // Experiencia conectada: dos decoraciones en parte inferior
             if (id === 'experiencia-conectada') {
                 const deco1 = crearImagen(imgSrc, undefined, undefined, '0', '0', `translateX(-${offset}) rotate(-${rotate})`);
                 const deco2 = crearImagen(imgSrc, undefined, '0', '0', undefined, `translateX(${offset}) rotate(${rotate})`);
                 section.appendChild(deco1);
                 section.appendChild(deco2);
             }
-            // Una sola plataforma: inferior derecha
             else if (id === 'plataforma') {
                 const deco = crearImagen(imgSrc, undefined, '0', '0', undefined, `translateX(${offset}) rotate(${rotate})`);
                 section.appendChild(deco);
             }
-            // La tecnología: inferior izquierda
             else if (section.querySelector('.tech-grid') !== null && !id) {
                 const deco = crearImagen(imgSrc, undefined, undefined, '0', '0', `translateX(-${offset}) rotate(-${rotate})`);
                 section.appendChild(deco);
             }
-            // Beneficios reales: inferior derecha
             else if (id === 'beneficios-gestion') {
                 const deco = crearImagen(imgSrc, undefined, '0', '0', undefined, `translateX(${offset}) rotate(${rotate})`);
                 section.appendChild(deco);
             }
-            // Así se vive: superior izquierda y derecha
             else if (id === 'recorrido') {
                 const deco1 = crearImagen(imgSrc, '0', undefined, undefined, '0', `translateX(-${offset}) rotate(-${rotate})`);
                 const deco2 = crearImagen(imgSrc, '0', '0', undefined, undefined, `translateX(${offset}) rotate(${rotate})`);
                 section.appendChild(deco1);
                 section.appendChild(deco2);
             }
-            // Adaptable: solo lateral derecho
             else if (section.querySelector('.adaptable-wrapper') !== null && !id) {
                 const decoDer = crearImagen(imgSrc, '50%', '0', undefined, undefined, `translate(${offset}, -50%) rotate(${rotate})`);
                 section.appendChild(decoDer);
             }
-            // Diferenciadores: esquina superior izquierda
             else if (id === 'diferenciadores') {
                 const deco = crearImagen(imgSrc, '0', undefined, undefined, '0', `translateX(-${offset}) rotate(-${rotate})`);
                 section.appendChild(deco);
             }
-            // CTA final: lateral derecho e izquierdo
             else if (id === 'demo') {
                 const decoIzq = crearImagen(imgSrc, '50%', undefined, undefined, '0', `translate(-${offset}, -50%) rotate(-${rotate})`);
                 const decoDer = crearImagen(imgSrc, '50%', '0', undefined, undefined, `translate(${offset}, -50%) rotate(${rotate})`);
